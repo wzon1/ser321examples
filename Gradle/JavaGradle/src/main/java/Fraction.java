@@ -37,24 +37,31 @@ public class Fraction {
       return numerator;
    }
 
-   public static void main (String args[]) {
-      try {
-         // create a new instance
-         // Fraction *frac = [[Fraction alloc] init];
-         Fraction frac = new Fraction();
-
-         // set the values
-         frac.setNumerator(1);
-         frac.setDenominator(3);
-
-         // print it
-         System.out.print("The fraction is: ");
-         frac.print();
-         System.out.println("");
-
-      }catch(Exception e) {
-         e.printStackTrace();
-      }
-   }
+   public static void main(String args[]) {
+    int num = 1, denom = 2; // Default values
+    if (args.length == 2) {
+        try {
+            num = Integer.parseInt(args[0]);
+            denom = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid arguments! Please enter two integers.");
+            System.exit(1);
+        }
+    } else if (args.length == 1) {
+        try {
+            num = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid argument! Please enter an integer.");
+            System.exit(1);
+        }
+    }
+    
+    Fraction frac = new Fraction();
+    frac.setNumerator(num);
+    frac.setDenominator(denom);
+    
+    System.out.print("The fraction is: ");
+    frac.print();
+    System.out.println("");
 }
 
