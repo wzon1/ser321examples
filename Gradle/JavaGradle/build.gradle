@@ -47,8 +47,15 @@ task runFraction(type: JavaExec) {
   description 'Tasks which runs Fraction with no arguments'
 
   classpath = sourceSets.main.runtimeClasspath
-
   main = 'Fraction'
+
+  if (project.hasProperty("num") && project.hasProperty("denom")) {
+    args(project.getProperty('num'), project.getProperty('denom'))
+  } else if (project.hasProperty("num")) {
+    args(project.getProperty('num'), "2") // Default denominator
+  } else {
+    args("1", "2") // Default fraction 1/2
+  }
 }
 
 // Try:
