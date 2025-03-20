@@ -63,5 +63,7 @@ public class Fraction {
     System.out.print("The fraction is: ");
     frac.print();
     System.out.println("");
+ }
 }
+
 
